@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="prism.css">
+	<script src="prism.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fair-style-button {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 2px solid white;
+            color: white;
+            background-color: #00bb2d;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            font-size: 18px;
+            transition: transform 0.2s ease-in-out;
+        }
+        .fair-style-but {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 2px solid white;
+            color: white;
+            background-color: blue;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            font-size: 18px;
+            transition: transform 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <h1>Taller 1</h1>
+    <p><img src="3.png"></p>
+    <pre>
+        <code class="language-python">
+#Programa 
+#Autor: Andres Santana 
+#Fecha: 01/03/2023
+
+nombre=input("Nombre: ")
+e=int(input("Estrato: "))
+if e==1:
+    t=10000
+elif e==2:
+    t=15000
+elif e==3:
+    t=30000
+elif e==4:
+    t=50000
+else:
+    t=65000
+
+print("Nombre: ",nombre)
+print("Tarifa basica: ",t)
+
+
+ 
+        </code>
+    </pre>
+
+    <h1>Taller 2</h1>
+    <p><img src="4.png"></p>
+    <pre>
+        <code class="language-python">
+# Programa para calcular el valor de la matrícula de un estudiante
+# Autor: Juan Esteban Gómez García
+# Fecha: 01/03/2023
+
+nombre = input("Nombre de Estudiante: ")
+codigo = int(input("Código de Estudiante: "))
+programa = int(input("Seleccione programa académico:\n 1. Técnico en Sistemas\n 2. Técnico en Desarrollo de videojuegos\n 3. Técnico en Animación Digital\n"))
+beca = int(input("Seleccione beca:\n 1. Beca por rendimiento académico\n 2. Beca Cultural\n 3. Sin Beca\n"))
+if programa == 1:
+    valorm = 800000
+elif programa == 2:
+    valorm = 1000000
+else:
+    valorm = 1200000
+if beca == 1:
+    descuento = valorm*0.5
+elif beca ==2:
+    descuento = valorm*0.4
+else:
+    descuento = 0
+valort = valorm - descuento
+print("Nombre de Estudiante: ", nombre)
+print("Valor neto de matricula: ", "{:,.2f}".format(valort))
+        </code>
+    </pre>
+
+    <h1>Taller 3</h1>
+    <p><img src="5.png"></p>
+
+    <pre>
+        <code class="language-python">
+# Programa para calcular la comisión de ventas de vendedores
+# Autor: Juan Esteban Gómez García
+# Fecha: 03/03/2023
+
+cedula = int(input("Cédula de ciudadanía del vendedor: "))
+
+valorTotalVentas = 0
+valorTotalComisiones = 0
+while cedula != -1:
+    nombre = input("Nombre del vendedor: ")
+    tipoVendedor = int(input("Tipo de vendedor (1=Puerta a puerta, 2=Telemercadeo, 3=Ejecutivo de ventas): "))
+    valorVentas = float(input("Valor de ventas realizadas en el mes: "))
+    if tipoVendedor == 1:
+        comisiones = valorVentas*0.2
+    elif tipoVendedor == 2:
+        comisiones = valorVentas*0.15
+    else:
+        comisiones = valorVentas*0.25
+    valorTotalComisiones = valorTotalComisiones + comisiones
+    valorTotalVentas = valorTotalVentas + valorVentas
+    print("Valor a pagar a", nombre, "es: ", "{:,.2f}".format(comisiones))
+    cedula = int(input("Cédula de ciudadanía del vendedor: "))
+print("Valor total de ventas es: ", "{:,.2f}".format(valorTotalVentas))
+print("Valor total a pagar por comisiones es: ", "{:,.2f}".format(valorTotalComisiones))
+        </code>
+    </pre>
+
+    <h1>Taller 4:</h1>
+    <p><img src="7.png"></p>
+    <pre>
+        <code class="language-python">
+#horario docentes
+
+N = int(input("Cantidad de docentes: "))
+totalPagar = 0
+totalA = 0
+totalB = 0
+totalC = 0
+for i in range(N):
+    documento = int(input("Documento de indentidad: "))
+    nombre = input("Nombre del docente: ")
+    categoria = input("Categoría docente (A, B o C): ")
+    horas = float(input("Cantidad de horas laboradas: "))
+    if categoria == "A":
+        honorario = horas*25000
+        totalA = totalA + 1
+    elif categoria == "B":
+        honorario = horas*35000
+        totalB = totalB + 1
+    else:
+        honorario = horas*50000
+        totalC = totalC + 1
+    totalPagar = totalPagar + honorario
+    print("Honorario del docente", nombre, "es: ", honorario)
+print("Valor total a pagar: ", totalPagar)
+print("Docentes categoría A: ", totalA)
+print("Docentes categoría B: ", totalB)
+print("Docentes categoría C: ", totalC)
+        </code>
+    </pre>
+
+    <h1>Taller 5:</h1>
+    <p><img src="6.png"></p>
+    <pre>
+        <code class="language-python">
+#transrapido
+
+N = int(input("Cantidad de conductores: "))
+totalPagar = 0
+totalNovatos = 0
+totalExpertos = 0
+for i in range(N):
+    cedula = int(input("Cédula del conductor: "))
+    nombre = input("Nombre del conductor: ")
+    clase = int(input("Clase del conductor (1. Experto, 2. Novato): "))
+    valorPasajes = float(input("Valor por pasajes en el mes: "))
+    valorEncomiendas = float(input("Valor por encomiendas en el mes: "))
+    if clase == 1:
+        pagarPasajes = valorPasajes*0.3
+        pagarEncomiendas = valorEncomiendas*0.2
+        totalExpertos = totalExpertos + 1
+    else:
+        pagarPasajes = valorPasajes*0.2
+        pagarEncomiendas = valorEncomiendas*0.15
+        totalNovatos = totalNovatos + 1
+    valorPagar = pagarPasajes + pagarEncomiendas
+    totalPagar = totalPagar + valorPagar
+    print("Nombre del conductor: ", nombre)
+    print("Pago de pasajes: ", "{:,.2f}".format(pagarPasajes))
+    print("Pago de encomiendas: ", "{:,.2f}".format(pagarEncomiendas))
+    print("Valor a pagar: ", "{:,.2f}".format(valorPagar))
+print("Valor total: ", "{:,.2f}".format(totalPagar))
+print("Total de expertos: ", "{:,}".format(totalExpertos))
+print("Total de novatos: ", "{:,}".format(totalNovatos))
+        </code>
+    </pre>
+
+    <h1>Taller 6: Tipo Reto</h1>
+    <p><img src="8.png"></p>
+    <pre>
+        <code class="language-python">
+#comision vendedores
+
+N = int(input("Cantidad de vendedores: "))
+valorTotal = 0
+for i in range(N):
+    documento = int(input("Documento de indentidad: "))
+    nombreVendedor = input("Nombre del vendedor: ")
+    tipoVendedor = int(input("Tipo de vendedor (1=Puerta a puerta, 2=Telemercadeo, 3=Ejecutivo de ventas): "))
+    M = int(input("Cantidad de ventas :"))
+    valorTotalVentas = 0
+    valorComision = 0
+    for j in range(M):
+        nombreCliente = input("Nombre del cliente: ")
+        codigo = int(input("Código del cliente: "))
+        tipoVenta = int(input("Tipo de venta (1=Contado, 2=Crédito): "))
+        valorVenta = float(input("Valor de la venta: "))
+        if tipoVendedor == 1 and tipoVenta == 1:
+            comision = valorVenta*0.25
+        elif tipoVendedor == 1 and tipoVenta == 2:
+            comision = valorVenta*0.2
+        elif tipoVendedor == 2 and tipoVenta == 1:
+            comision = valorVenta*0.15
+        elif tipoVendedor == 2 and tipoVenta == 2:
+            comision = valorVenta*0.1
+        elif tipoVendedor == 3 and tipoVenta == 1:
+            comision = valorVenta*0.2
+        else:
+            comision = valorVenta*0.15
+        valorTotalVentas = valorTotalVentas + valorVenta
+        valorComision = valorComision + comision
+    print("Valor a pagar a", nombreVendedor, "es: ", valorComision)
+    print("Valor total de ventas de", nombreVendedor, "es: ", valorTotalVentas)
+    valorTotal = valorTotal + valorComision
+print("Valor total a pagar: ", valorTotal)
+        </code>
+    </pre>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
