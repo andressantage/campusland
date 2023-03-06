@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="prism.css">
+	<script src="prism.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>01/03/2023</h1>
+    <pre>
+        <code class="language-python">
+el solo "=" es para asignacion
+difernte "!="
+En python 
+operador AND: and
+operador OR: or
+
+EXERCISE
+Dado el nombre y salario de un empleado, calcular el
+subsidio de transporte, teniendo en cuenta que si el
+salario es menor o igual a $1.200.000 entonces tiene
+derecho a un subsidio de transporte por valor de
+$120.000, de lo contrario no tiene derecho al subsidio de
+transporte. Se debe visualizar el nombre, salario y
+subsidio de transporte
+
+ANALISIS
+ENTRADA: nombre y salario
+PROCESO: si el salario es menor o igual a $1.200.000 entonces tiene
+derecho a un subsidio de transporte por valor de
+$120.000, de lo contrario no tiene derecho al subsidio de
+transporte
+"se pone por tanto:" 
+Condicional: Para calcular subsidio
+SALIDA: nombre, salario y subsidio
+
+Se debe leer: nombre y salario
+Proceso: Condicion: Para calcular subsidio
+Se debe imprimir: nombre, salario y subsidio
+
+Pseint:
+Algoritmo subsidio_transporte
+	Escribir "Nombre empleado: "
+	Leer nombre
+	Escribir "Salario: "
+	Leer salario
+	Si salario<=1200000 Entonces
+		subsidio=120000
+	SiNo
+		subsidio=0	
+	FinSi
+	Escribir "Nombre empleado: ", nombre
+	Escribir "Salario: ",salario
+	Escribir "Subsidio: ",subsidio
+FinAlgoritmo
+
+Llevarlo a Python seria codificarlo
+else=de otro modo
+
+Python:
+#Programa calculo subsidio de transporte
+#Autor: Andres Santana 
+#Fecha: 01/03/2023
+nombre=input("Nombre empleado: ")
+salario=float(input("Salario: "))
+if salario<=1200000:
+    subsidio=120000
+else:
+    subsidio=0
+print("Nombre empleado: ", nombre)
+print("Salario: ", salario)
+print("Subsidio: ", subsidio)
+
+condiciones anidadas: cuando hay una condicion dentro de otra condicion
+
+Dado el nombre del estudiante y la calificación cuantitativa de
+una evaluación (0-100), se pide hallar la calificación cualitativa,
+de acuerdo a la siguiente información
+Rango Evaluación Evaluación cualitativa
+0 - 59                   D
+60 - 79                  C
+80 - 89                  B
+90 - 100                 A
+
+Se pide visualizar, nombre, calificación
+cuantitativa y cualitativa.
+
+Los datos se evaluan en la entrada. La validacion de los datos se hacen en la entrada
+
+ENTRADA: nombre del estudiante y calificación cuantitativa 
+PROCESO: condicional anidaado: hallar la nota cualitativa
+Condicional=
+Rango Evaluación Evaluación cualitativa
+0 - 59                   D
+60 - 79                  C
+80 - 89                  B
+90 - 100                 A
+
+SALIDA: nombre, calificación cuantitativa y cualitativa.
+
+Analisis, diseño, 
+
+siempre cuando hay n rangos hay n preguntas la regla del sastre
+
+Pseint:
+Algoritmo condicional_anidado
+    Escribir "Nombre: "
+    Leer nombre
+    Escribir "Nota cuantitativa: "
+    Leer nota
+    Si nota<=59 Entonces
+        notac="D"
+    SiNo
+        Si nota<=79 Entonces
+            notac="C"
+        SiNo
+            Si nota<=89 Entonces
+                notac="B"
+            SiNo
+                notac="A"
+			FinSi
+		FinSi
+	FinSi	
+	Escribir 'Nombre: ',nombre
+	Escribir 'Nota cualiitativa: ',nota
+	Escribir 'Nota cuantitativa: ',notac
+FinAlgoritmo
+
+Python:
+#Programa 
+#Autor: Andres Santana 
+#Fecha: 01/03/2023
+
+nombre=input("Nombre: ")
+nota=float(input("Nota cuantitativa: "))
+if nota<=59:
+    notac="D"
+elif nota<=79:
+    notac="C"
+elif nota<=89:
+    notac="B"
+else:
+    notac="A"
+
+print("Nombre: ",nombre)
+print("Nota cuantitativa: ", nota)
+print("Nota cualitativa: ", notac)
+
+cuando se quiere arreglar como sale la salida se usa format=  print("(:,.2f)".format(numero))
+        </code>
+    </pre>
+
+    <h1>02/03/2023</h1>
+    <pre>
+        <code class="language-python">
+Nota: otras cosas de las demass clase
+
+Uso de ejercicio
+
+Se tiene la siguiente información sobre los N (N es suministrado) usuarios del servicio de AGUA:
+• Código
+• Nombre
+• Estado: Puede ser V=Vigente o S=Suspendido
+• Estrato: Puede ser 1,2,3,4 5 o 6
+• Consumo del mes (en cm3)
+Se pide calcular el valor a pagar por concepto de servicio de AGUA de cada usuario, teniendo en cuenta que este valor es la
+suma del valor de tarifa más el valor del consumo. También nos indican que el valor de la tarifa básica depende del estrato
+así :
+(ESTRATO - TARIFA BÁSICA): ( 1 - $10.000, 2 - $20.000, 3 - $30.000, 4 - $45.000, 5 - $60.000, 6 -$70.000)
+Además el valor del consumo es el consumo del mes por el valor de 1 cm3 que de $200
+Se debe imprimir el nombre del usuario, el valor de la tarifa básica, el valor del consumo y el valor a pagar por concepto
+del servicio de AGUA
+
+NOTA: Se liquida servicio de AGUA a los usuarios con estado V (Vigente)
+
+CamelCase: nombre del estandar
+ejemplo: tarifaBasica, es decir la primera en minuscula y la segunda en mayuscula
+
+ENTRADA: N, codigo, nombre, estado, estrato, consumo
+PROCESO: ciclo: proceso de liquidacion del usuario. For: se debe hacer N veces
+         condicional anidado: estrato, para calcular la tarifaBasica
+         condicional simple: estado para asber si liquiea o no
+         valorConsumo=consumo*200
+         valorPagar=tarifaBasica+valorConsumo   
+SALIDA: nombre, tarifaBasica, valorConsumo, valorPagar
+
+Pseint:
+Algoritmo servicio_agua
+    Escribir "Cantidad de usuarios"
+    Leer N
+    Para i=1 Hasta N Con Paso 1 hacer
+        Escribir "Codigo: "
+        Leer codigo
+        Escribir "Nombre del usuario: "
+        Leer nombre
+        Escribir "Estado(V:Vigente, S: Suspendido): "
+        Leer estado
+        Escribir "Estrato (1,2,3,4,5,6)"
+        Leer estrato
+        Escribir "Consumo del mes: "
+        Leer consumo
+        Si estado="V" Entonces
+            Si estrato=1 Entonces
+                tarifaBasica=10000
+            SiNo
+                Si estrato=2 Entonces
+                    tarifaBasica=20000
+                SiNo
+                    Si estrato=3 Entonces
+                        tarifaBasica=30000
+                    SiNo
+                        Si estrato=4 Entonces
+                            tarifaBasica=45000
+                        SiNo
+                            Si estrato=5 Entonces
+                                tarifaBasica=60000
+                            SiNo
+                                tarifaBasica=70000
+                            Fin Si
+                        Fin Si
+                    Fin Si
+                Fin Si
+            Fin Si
+            valorConsumo=consumo*200
+            valorPagar=tarifaBasica+valorConsumo
+            Escribir "Nombre del usuario", nombre
+            Escribir "Tarifa basica ", tarifaBasica
+            Escribir "Valor consumo ", valorConsumo
+            Escribir "Valor a pagar ", valorPagar
+        Fin Si
+    Fin Para
+FinAlgoritmo
+
+Python:
+#Programa 
+#Autor: Andres Santana 
+#Fecha: 02/03/2023
+N=int(input("Cantidad de usuarios: "))
+for i in range(N):
+    codigo=int(input("Codigo: "))
+    nombre=input("Nombre del usuario: ")
+    estado=input("Estado(V:Vigente, S: Suspendido): ")
+    estrato=int(input("Estrato (1,2,3,4,5,6)"))
+    consumo=float(input("Consumo del mes: "))
+    if estado=="V":
+        if estrato==1:
+            tarifaBasica=10000
+        elif estrato==2:
+            tarifaBasica=20000
+        elif estrato==3:
+            tarifaBasica=30000
+        elif estrato==4:
+            tarifaBasica=45000
+        elif estrato==5:
+            tarifaBasica=60000
+        else:
+            tarifaBasica=70000
+        valorConsumo=consumo*200
+        valorPagar=tarifaBasica+valorConsumo
+        print("Nombre del usuario", nombre)
+        print("Tarifa basica ", "{:,.2f}".format(tarifaBasica))
+        print("Valor consumo ", "{:,.2f}".format(valorConsumo))
+        print("Valor a pagar ", "{:,.2f}".format(valorPagar))
+
+EJERCICIO:
+Iteración o ciclo controlado por cantidad
+Se tiene la siguiente información sobre los N (N es suministrado) usuarios del servicio de AGUA:
+• Código
+• Nombre
+• Estado: Puede ser V=Vigente o S=Suspendido
+• Estrato: Puede ser 1,2,3,4 5 o 6
+• Consumo del mes (en cm3)
+Se pide calcular el valor a pagar por concepto de servicio de AGUA de cada usuario, teniendo en cuenta que este valor es la
+suma del valor de tarifa más el valor del consumo. También nos indican que el valor de la tarifa básica depende del estrato
+así :
+(ESTRATO - TARIFA BÁSICA): ( 1 - $10.000, 2 - $20.000, 3 - $30.000, 4 - $45.000, 5 - $60.000, 6 -$70.000)
+Además el valor del consumo es el consumo del mes por el valor de 1 cm3 que de $200
+Se debe imprimir el nombre del usuario, el valor de la tarifa básica, el valor del consumo y el valor a pagar por concepto
+del servicio de AGUA
+NUEVO: Además se pide calcular e imprimir el valor total del servicio de agua (TODOS LOS USUARIOS)
+NOTA: Se liquida servicio de AGUA a los usuarios con estado V (Vigente)
+
+hay dos tipos de acumuladores: el sumador y el contador (cuando es contador es 1+1 y asi sucesivamente)
+
+ENTRADA: N, iniciar totalPagar(no es una entrada pero se pone ahi debido a la secuencia, hace parte del proceso),codigo, nombre, estado, estrato, consumo
+PROCESO: ciclo: proceso de liquidacion del usuario. For: se debe hacer N veces
+         condicional anidado: estrato, para calcular la tarifaBasica
+         condicional simple: estado para asber si liquiea o no
+         valorConsumo=consumo*200
+         valorPagar=tarifaBasica+valorConsumo   
+         incrementar totalPagar
+SALIDA: nombre, tarifaBasica, valorConsumo, valorPagar, totalPagar=>(es un acumulador), sumador de valor
+
+Pseint:
+Algoritmo servicio_agua
+    Escribir "Cantidad de usuarios"
+    Leer N
+    totalPagar=0
+    Para i=1 Hasta N Con Paso 1 hacer
+        Escribir "Codigo: "
+        Leer codigo
+        Escribir "Nombre del usuario: "
+        Leer nombre
+        Escribir "Estado(V:Vigente, S: Suspendido): "
+        Leer estado
+        Escribir "Estrato (1,2,3,4,5,6)"
+        Leer estrato
+        Escribir "Consumo del mes: "
+        Leer consumo
+        Si estado="V" Entonces
+            Si estrato=1 Entonces
+                tarifaBasica=10000
+            SiNo
+                Si estrato=2 Entonces
+                    tarifaBasica=20000
+                SiNo
+                    Si estrato=3 Entonces
+                        tarifaBasica=30000
+                    SiNo
+                        Si estrato=4 Entonces
+                            tarifaBasica=45000
+                        SiNo
+                            Si estrato=5 Entonces
+                                tarifaBasica=60000
+                            SiNo
+                                tarifaBasica=70000
+                            Fin Si
+                        Fin Si
+                    Fin Si
+                Fin Si
+            Fin Si
+            valorConsumo=consumo*200
+            valorPagar=tarifaBasica+valorConsumo
+            totalPagar=totalPagar+valorPagar
+            Escribir "Nombre del usuario", nombre
+            Escribir "Tarifa basica ", tarifaBasica
+            Escribir "Valor consumo ", valorConsumo
+            Escribir "Valor a pagar ", valorPagar
+        Fin Si
+    Fin Para
+    Escribir "Valor total a pagar ", totalPagar
+FinAlgoritmo
+
+Python:
+#Programa 
+#Autor: Andres Santana 
+#Fecha: 02/03/2023
+N=int(input("Cantidad de usuarios: "))
+totalPagar=0
+for i in range(N):
+    codigo=int(input("Codigo: "))
+    nombre=input("Nombre del usuario: ")
+    estado=input("Estado(V:Vigente, S: Suspendido): ")
+    estrato=int(input("Estrato (1,2,3,4,5,6)"))
+    consumo=float(input("Consumo del mes: "))
+    if estado=="V" or estado=="v":
+        if estrato==1:
+            tarifaBasica=10000
+        elif estrato==2:
+            tarifaBasica=20000
+        elif estrato==3:
+            tarifaBasica=30000
+        elif estrato==4:
+            tarifaBasica=45000
+        elif estrato==5:
+            tarifaBasica=60000
+        else:
+            tarifaBasica=70000
+        valorConsumo=consumo*200
+        valorPagar=tarifaBasica+valorConsumo
+        #se puede usar asi: totalPagar=totalPagar+valorPagar
+        #tambien se puede usar asi: totalPagar+=valorPagar
+        #es lo mismo al final
+        totalPagar+=valorPagar
+        print("Nombre del usuario", nombre)
+        print("Tarifa basica ", "{:,.2f}".format(tarifaBasica))
+        print("Valor consumo ", "{:,.2f}".format(valorConsumo))
+        print("Valor a pagar ", "{:,.2f}".format(valorPagar))
+        
+print("Valor total: ", "{:,.2f}".format(totalPagar))
+        </code>
+    </pre>
+
+    <h1>02/03/2023</h1>
+    <pre>
+        <code class="language-python">
+Resumen 03/30/2023
+De hoy en 8 posiblemente se hara por equipos una maraton de programacion
+Estructuras de control 
+while depende de una condicion
+
+EJERCICIO:
+Dada unos números enteros, se pide calcular e imprimir:
+• Cuáles y cuántos números son pares
+• Cuáles y cuántos números son impares
+La lista se termina cuando el número ingresado es -1 (Bandera)
+
+ENTRADA: numero
+PROCESO: ciclo: proceso aca da cada numero - WHILE mientras el numero no sea -1
+        condicional: saber si es par o impar
+SALIDA: el numero es par o impar
+        cantidadPares, cantidadImpares, Contador
+
+Pseint:
+Algoritmo numeros_pares_impares
+    Escribir "Numero entero: "
+    Leer numeroEntero
+    cantidadPares=0
+    cantidadImpares=0
+    Mientras numeroEntero!=-1 Hacer
+        Si numeroEntero%2==0 Entonces 
+            Escribir numeroEntero, " es PAR"
+            cantidadPares=cantidadPares+1
+        SiNo
+            Escribir numeroEntero," es IMPAR"
+            cantidadImpares=cantidadImpares+1
+        FinSi
+        Escribir "Numero entero: "
+        Leer numeroEntero
+    FinMientras
+    Escribir "Cantidad de pares es: ", cantidadPares
+    Escribir "Cantidad de impares es: ", cantidadImpares
+FinAlgoritmo
+
+Python:
+pares = 0
+impares = 0
+numero = int(input("Digite un número entero: "))
+while numero != -1:
+    if numero%2 == 0:
+        print("El número ",numero," es par")
+        pares += 1
+    else:
+        print("El número ",numero," es impar")
+        impares += 1
+        
+    numero = int(input("Digite un número entero: "))
+
+print(f"Los números pares son: {pares}\nLos números impares son: {impares}")
+        </code>
+    </pre>
+</body>
+</html>

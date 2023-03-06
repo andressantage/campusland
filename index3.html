@@ -34,8 +34,7 @@
     <h1>Taller 1</h1>
     <p><img src="3.png"></p>
     <pre>
-        <code class="language-python">
-#Programa 
+<code class="language-python">#Programa 
 #Autor: Andres Santana 
 #Fecha: 01/03/2023
 
@@ -53,18 +52,13 @@ else:
     t=65000
 
 print("Nombre: ",nombre)
-print("Tarifa basica: ",t)
-
-
- 
-        </code>
+print("Tarifa basica: ",t)</code>
     </pre>
 
     <h1>Taller 2</h1>
     <p><img src="4.png"></p>
     <pre>
-        <code class="language-python">
-# Programa para calcular el valor de la matrícula de un estudiante
+<code class="language-python"># Programa para calcular el valor de la matrícula de un estudiante
 # Autor: Juan Esteban Gómez García
 # Fecha: 01/03/2023
 
@@ -86,16 +80,14 @@ else:
     descuento = 0
 valort = valorm - descuento
 print("Nombre de Estudiante: ", nombre)
-print("Valor neto de matricula: ", "{:,.2f}".format(valort))
-        </code>
+print("Valor neto de matricula: ", "{:,.2f}".format(valort))</code>
     </pre>
 
     <h1>Taller 3</h1>
     <p><img src="5.png"></p>
 
     <pre>
-        <code class="language-python">
-# Programa para calcular la comisión de ventas de vendedores
+<code class="language-python"># Programa para calcular la comisión de ventas de vendedores
 # Autor: Juan Esteban Gómez García
 # Fecha: 03/03/2023
 
@@ -118,15 +110,48 @@ while cedula != -1:
     print("Valor a pagar a", nombre, "es: ", "{:,.2f}".format(comisiones))
     cedula = int(input("Cédula de ciudadanía del vendedor: "))
 print("Valor total de ventas es: ", "{:,.2f}".format(valorTotalVentas))
-print("Valor total a pagar por comisiones es: ", "{:,.2f}".format(valorTotalComisiones))
-        </code>
+print("Valor total a pagar por comisiones es: ", "{:,.2f}".format(valorTotalComisiones))</code>
+    </pre>
+    <p>Hecho con listas</p>
+    <pre>
+<code class="language-python">#Programa 
+#Autor: Andres Santana 
+#Fecha: 02/03/2023
+registro=[]
+cedula=0
+suma=0
+while cedula != -1:
+    cedula=int(input("Cedula de ciudadania: "))
+    if cedula == -1:
+        print("\n")
+        break
+    
+    nombre=input("Nombre: ")
+    tipo=int(input("Tipo de vendedor:\n 1: Puerta a Puerta\n 2: Telemercadeo\n 3: Ejecutivo de ventas\n Digitar numero (1,2,3): "))
+    ventas=float(input("Valor ventas realizadas en el mes: "))
+    if tipo==1:
+        d=0.2
+    elif tipo==2:
+        d=0.15
+    else:
+        d=0.25
+    comision=ventas*d  
+    registro.append([cedula,nombre,tipo,ventas,comision])
+    suma=suma+comision
+    print("\n")
+
+for item in registro:
+    print(f"El valor a pagar por comisión para {item[1]} es de: ","{:,.2f}".format(item[4]))
+    print(f"El valor total de las ventas del mes: ","{:,.2f}".format(ventas))
+    print("\n")
+
+print("El valor total a pagar por comisiones es: ","{:,.2f}".format(suma))</code>
     </pre>
 
     <h1>Taller 4:</h1>
     <p><img src="7.png"></p>
     <pre>
-        <code class="language-python">
-#horario docentes
+<code class="language-python">#horario docentes
 
 N = int(input("Cantidad de docentes: "))
 totalPagar = 0
@@ -152,15 +177,55 @@ for i in range(N):
 print("Valor total a pagar: ", totalPagar)
 print("Docentes categoría A: ", totalA)
 print("Docentes categoría B: ", totalB)
-print("Docentes categoría C: ", totalC)
-        </code>
+print("Docentes categoría C: ", totalC)</code>
+    </pre>
+    <p>Hecho con listas</p>
+    <pre>
+<code class="language-python">#Programa 
+#Autor: Andres Santana 
+#Fecha: 02/03/2023
+
+registro=[]
+n=int(input("Escribir el numero de docentes de la institucion educativa: "))
+A=0
+B=0
+C=0
+valor_total=0
+for i in range(n):
+    cedula=int(input("Documento de identidad: "))
+    nombre=input("Nombre: ")
+    categoria=input("Categoria docente (A, B o C): ")
+    horas_mes=int(input("Horas laborales en el mes: "))  
+    if categoria=="A":
+        hora=25000
+        A=A+1
+    elif categoria=="B":
+        hora=35000
+        B=B+1
+    else:
+        hora=50000
+        C=C+1
+    
+    honorarios=horas_mes*hora
+    valor_total=valor_total+honorarios
+    registro.append([cedula,nombre,categoria,hora,honorarios])
+    print("\n")
+
+for item in registro:
+    print(f"El valor a pagar al docente {item[1]} por honorarios es: ","{:,.2f}".format(item[4]))
+    print("\n")
+
+print("El valor total a pagar a los docentes es: ","{:,.2f}".format(valor_total)) 
+print("Cantidad de docentes de cada una de las categorias es: ")
+print("De la categoria A es: ",A)
+print("De la categoria B es: ",B)
+print("De la categoria C es: ",C)</code>
     </pre>
 
     <h1>Taller 5:</h1>
     <p><img src="6.png"></p>
     <pre>
-        <code class="language-python">
-#transrapido
+<code class="language-python">#transrapido
 
 N = int(input("Cantidad de conductores: "))
 totalPagar = 0
@@ -188,15 +253,57 @@ for i in range(N):
     print("Valor a pagar: ", "{:,.2f}".format(valorPagar))
 print("Valor total: ", "{:,.2f}".format(totalPagar))
 print("Total de expertos: ", "{:,}".format(totalExpertos))
-print("Total de novatos: ", "{:,}".format(totalNovatos))
-        </code>
+print("Total de novatos: ", "{:,}".format(totalNovatos))</code>
+    </pre>
+    <p>Hecho con listas</p>
+    <pre>
+<code class="language-python">#Programa 
+#Autor: Andres Santana 
+#Fecha: 02/03/2023
+registro=[]
+n=int(input("Escribir el numero de conductores: "))
+total=0
+n_novatos=0
+n_expertos=0
+for i in range(n):
+    cedula=int(input("Cedula: "))
+    nombre=input("Nombre: ")
+    clase=int(input("Clase conductor:\n 1. Experto\n 2. Novato\n Digitar numero (1,2): "))       
+    pasajes=float(input("Valor total por concepto de pasajes del mes: "))
+    encomiendas=float(input("Valor total por concepto de encomiendas del mes: "))
+    #c1 es el porcentaje de la comision para pasaje segun clase de conductor
+    #c2 es el porcentaje de la comision para encomienda segun clase de conductor
+    if clase==1:
+        c1=0.3
+        c2=0.2
+        n_expertos=n_expertos+1
+        
+    else:
+        c1=0.2
+        c2=0.15
+        n_novatos=n_novatos+1
+    
+    pago_pasajes=pasajes*c1
+    pago_encomiendas=encomiendas*c2
+    total=total+pago_encomiendas+pago_pasajes
+    registro.append([cedula,nombre,clase,pasajes,encomiendas,pago_pasajes,pago_encomiendas])
+    print("\n")
+
+for item in registro:
+    print(f"El valor a pagar a {item[1]} es: ")
+    print(f"Por concepto de pasajes:","{:,.2f}".format(item[5]))
+    print(f"Por concepto de encomiendas:","{:,.2f}".format(item[6]))
+    print("\n")
+
+print("El valor total a pagar a los conductores es: ","{:,.2f}".format(total))
+print("Cantidad de conductores novatos es: ",n_novatos)
+print("Cantidad de conductores expertos es: ",n_expertos)</code>
     </pre>
 
     <h1>Taller 6: Tipo Reto</h1>
     <p><img src="8.png"></p>
     <pre>
-        <code class="language-python">
-#comision vendedores
+<code class="language-python">#comision vendedores
 
 N = int(input("Cantidad de vendedores: "))
 valorTotal = 0
@@ -229,8 +336,60 @@ for i in range(N):
     print("Valor a pagar a", nombreVendedor, "es: ", valorComision)
     print("Valor total de ventas de", nombreVendedor, "es: ", valorTotalVentas)
     valorTotal = valorTotal + valorComision
-print("Valor total a pagar: ", valorTotal)
-        </code>
+print("Valor total a pagar: ", valorTotal)</code>
+    </pre>
+    <p>Hecho con listas</p>
+    <pre>
+<code class="language-python">#Programa 
+#Autor: Andres Santana 
+#Fecha: 02/03/2023
+
+registro=[]
+vendedor=[]
+n=int(input("Escribir el numero de vendedores de la organizacion: "))
+valor_comisiones_vendedores=0
+
+for i in range(n):
+    cedula=int(input("Documento de identidad: "))
+    nombre=input("Nombre: ")
+    tipo=int(input("Tipo de vendedor:\n 1: Puerta a Puerta\n 2: Telemercadeo\n 3: Ejecutivo de ventas\n Digitar numero (1,2,3): "))  
+    m=int(input("Ingresar el numero de ventas que realiza el vendedor: "))
+    #v es un acumulador para guardar para cada vendedor el valor a pagar por concepto de comisiones
+    v=0
+    #s es un acumulador para guardar para cada vendedor el valor total de ventas
+    s=0
+    for i in range(m):
+        nombre_cliente=input("Nombre del cliente: ")
+        codigo_cliente=int(input("Código del cliente: "))
+        tipo_venta=int(input("Tipo Venta (1=Contado, 2=Crédito): "))
+        valor_venta=float(input("Valor de la venta: "))
+        vendedor.append([nombre_cliente,codigo_cliente,tipo_venta,valor_venta])
+        #c es el porcentaje de pago para la comision
+        if tipo==1 and tipo_venta==1:
+            c=0.25
+        elif tipo==1 and tipo_venta==2:
+            c=0.2
+        elif tipo==2 and tipo_venta==1:
+            c=0.15
+        elif tipo==2 and tipo_venta==2:
+            c=0.1
+        elif tipo==3 and tipo_venta==1:
+            c=0.2
+        elif tipo==3 and tipo_venta==2:
+            c=0.15   
+
+        v=v+valor_venta*c
+        s=s+valor_venta
+    
+    valor_comisiones_vendedores=valor_comisiones_vendedores+v    
+    registro.append([cedula,nombre,tipo,v,s])
+    print("\n")
+
+for item in registro:
+    print(f"El valor total para {item[1]} es de: \n"+"Por concepto de comisiones: "+"{:,.2f}".format(item[3])+"\nPor concepto de ventas: "+"{:,.2f}".format(item[4]))
+    print("\n")
+
+print("El valor total a pagar por comisiones es: ","{:,.2f}".format(valor_comisiones_vendedores))</code>
     </pre>
 </body>
 </html>
