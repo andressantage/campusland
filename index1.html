@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="prism.css">
+	<script src="prism.js"></script>
     <style>
         .fair-style-button {
             padding: 10px 20px;
@@ -30,6 +33,245 @@
     </style>
 </head>
 <body>
+    <h1>Taller 1</h1>
+    <p><img src="img/.png"></p>
+    <pre>
+        <code class="language-python">
+#En proceso %
+
+Primer reto
+
+#De cada cliente se solicitan los siguientes datos:
+#• Cédula del cliente
+#• Nombre del cliente
+#• Sexo del cliente [F, M] (F: Femenino, M:Másculino)
+#
+#Cada uno de los clientes realizan entre 1 a M compras de productos. La
+#información que se procesa por cada cliente es la siguiente:
+#• M, como la cantidad de productos a procesar.
+#• Para cada producto, ingresar:
+#◦ Código del producto.
+#◦ Valor unitario del producto
+#◦ Cantidad comprada.
+#◦ Tipo de IVA, que puede ser:
+#▪ 1: Exento de IVA
+#▪ 2: Bienes, donde se aplica como IVA el 5%
+#▪ 3: General, donde se aplica como IVA el 19%
+#
+#El gerente de la tienda desea que a través de un programa se calcule, para
+#cada producto, el valor del producto, que corresponde a la cantidad comprada
+#por el valor unitario (que se digita), el valor del IVA y el valor final del producto,
+#que corresponde a la suma del valor del producto más el valor de IVA. Además,
+#se desea conocer el valor total de la compra, es decir, la suma de los N
+#productos (tomando el valor final del producto, es decir con IVA aplicado) y el
+#valor total de IVA de la compra (La suma del valor de IVA de los N productos).
+#La información calculada para cada producto, en este caso, valor producto,
+#valor IVA y valor final se debe lmacenar en listas (para valor producto, valor
+#IVA y valor final).
+#
+#El gerente tambien desea conocer un informe al final del día con: la cantidad
+#de clientes, cuantos clientes mujeres, cuantos clientes hombres, el valor de la
+#venta de todos los productos, el valor total del IVA y el valor de la venta de los
+#productos sin IVA.
+
+def test_int(x):
     
+    while True:
+        try:      
+            x=int(input(x))
+            break   
+        except ValueError:
+            print("ERROR, ingrese número sin comas ni puntos.")
+    return x
+def test_float(x):
+    while True:
+        try:      
+            x=float(input(x))
+            break   
+        except ValueError:
+            print("ERROR, ingrese número decimal") 
+    return x 
+def info_cliente():
+    
+    etiqueta_cedula="Ingrese cedula:"
+    cedula=test_int(etiqueta_cedula)
+    nombre=input("Ingrese nombre:")
+    etiqueta_sexo="Ingrese sexo F:Femenino,M:Masculino :"
+    canm,canh=validar_sexo(etiqueta_sexo)    
+    
+    return canm,canh
+def validar_sexo(x):
+    cm=0
+    ch=0
+    while True:
+        try:              
+            sexo=input(x)
+            if(sexo == "F"):
+                cm=1
+            elif(sexo == "M"):
+                ch=1
+            else:
+                print("ERROR, elija F o M.")        
+                continue
+            break
+        except ValueError:
+            print("ERROR, Eliga F o M.")
+    
+    return cm,ch     
+def test_iva(tipo_iva):
+    
+    while True:
+        try:              
+            iva_tipo=int(input(tipo_iva))
+            if(iva_tipo >3 or iva_tipo < 1):
+                print("ERROR, El número de tipo de iva, es 1,2 ó 3")
+                continue
+            break
+        except ValueError:
+            print("ERROR, El número de tipo de iva, es 1,2 ó 3")
+            
+    return iva_tipo
+def iva(tipo_iva,valor_unitario,unidades):
+    
+    if(tipo_iva==1):
+        valor_iva=valor_unitario*unidades*0
+    elif(tipo_iva==2):
+        valor_iva=valor_unitario*unidades*0.05
+    else:
+        valor_iva=valor_unitario*unidades*0.19 
+    
+    return valor_iva    
+def info_productos(cantidad_productos):
+    
+    precio_total=0
+    iva_total=0
+    valor_producto_array=[]
+    valor_final_producto_array=[]
+    valor_iva_array=[]
+    
+    for i in range(cantidad_productos):
+        
+        print("||Información del producto #",i+1, "||")
+        label_codigo_poroducto="Ingrese codigo:"
+        codigo_producto=test_int(label_codigo_poroducto)
+        label_valor_unidad="Ingrese valor por unidad:"
+        valor_unitario=test_float(label_valor_unidad)
+        label_cantidad_unidades="Cantidad de unidades a llevar:"
+        unidades=test_int(label_cantidad_unidades)
+        label_tipo_iva="Tipo de IVA 1: Exento de IVA; 2: Bienes, donde se aplica como IVA el 5%; 3: General, donde se aplica como IVA el 19%: "
+        tipo_iva=test_iva(label_tipo_iva)
+        valor_iva=iva(tipo_iva,valor_unitario,unidades)              
+        
+        
+        valor_producto=valor_unitario*unidades
+        valor_total_producto=valor_producto + valor_iva
+        
+        valor_producto_array.append(valor_producto)
+        valor_iva_array.append(valor_iva)
+        valor_final_producto_array.append(valor_total_producto)
+        
+        
+        precio_total+=valor_total_producto
+        iva_total+=valor_iva
+        
+        
+    return
+
+#------MAIN-------
+cierre_turno=""
+cantidad_clientes=0
+cantidad_cmujeres=0
+cantidad_chombres=0
+
+while(cierre_turno != "si"):
+    
+    print("|| Información cliente #",cantidad_clientes+1, "||")
+    ccm,cch=info_cliente()
+    cantidad_cmujeres+=ccm
+    cantidad_chombres+=cch
+    cantidad_clientes+=1
+    label_nproductos="Ingrese cantidad de productos:"
+    nproductos=test_int(label_nproductos)
+    info_productos(nproductos)
+    cierre_turno=input("Cierre de turno (si o no):")
+    
+
+print("||INFORME FINAL||")
+print("||Cantidad de clientes=", cantidad_clientes, "|| Cantidad Mujeres:", cantidad_cmujeres, "||Cantidad de hombres:", cantidad_chombres)    
+
+
+Segundo reto
+total_nomina=0
+pension_empleados=0
+seguridad_social_empleados=0
+seguridad_social=0.04
+pension=0.04
+def validacion_novedad(etiqueta):
+    while True:
+        try:
+            dato=int(input(etiqueta))
+            if dato<1 or dato>2:
+                print("El numero debe ser 1 o 2")
+                continue
+            break
+        except ValueError:
+            print("Debe ser un dato entero")
+    return dato
+def validacion_entero(etiqueta):
+    while True:
+        try:
+            dato=int(input(etiqueta))
+            break
+        except ValueError:
+            print("El dato a ingresar debe ser entero")
+    return dato
+def validacion_dias(etiqueta):
+    while True:
+        try:
+            dato=int(input(etiqueta))
+            if dato<1 or dato>30:
+                print("El numero debe ser de 1 a 30")
+                continue
+            break
+        except ValueError:
+            print("Debe ser un dato entero")
+    return dato
+def validacion_subsidio(subsidio):
+    if salario_basico<=1160000:
+        subsidio=140000
+    else:
+        subsidio=0
+    return subsidio
+n=validacion_entero("Ingrese la cantidad de empleados: ")
+for n in range (n):
+    cedula=validacion_entero("Ingrese su numero de cedula: ")
+    nombre=input("Ingrese su nombre: ")
+    direccion=input("Ingrese su direccion: ")
+    dias_trabajados=validacion_dias("Ingrese cantidad de dias trabajados: ")
+    salario_basico=validacion_entero("Ingrese su salario basico: ")
+    total_seguridad_social=salario_basico*seguridad_social
+    total_pension=salario_basico*pension
+    salario=salario_basico/30*dias_trabajados  
+    devengados=salario+validacion_subsidio(salario_basico)
+    deducidos=total_seguridad_social+total_pension 
+    pension_empleados+=total_pension
+    seguridad_social_empleados+=total_seguridad_social
+    m=validacion_entero("Ingrese la cantidad novedades de nomina: ")
+    for m in range (m):
+        tipo_novedad=validacion_novedad("Ingrese el tipo de novedad(1.bonificacion-2.descuentos): ")
+        if tipo_novedad==1:
+            bonificaciones=validacion_entero("Ingrese el valor de bonificaciones: ")
+        if tipo_novedad==2:
+            descuentos_particulares=validacion_entero("Ingrese el valor de los descuentos particulares: ")
+    t_devengados=devengados+bonificaciones
+    t_deducidos=deducidos+descuentos_particulares
+    neto_empleado=t_devengados-t_deducidos
+    total_nomina+=neto_empleado
+    print(f"Total a pagar de {nombre}: ","{:,}".format(neto_empleado))
+print("Total de nomina a pagar: ","{:,}".format(total_nomina))
+print("Total de pension: ","{:,}".format(pension_empleados))
+print("Total de seguridad social: ","{:,}".format(seguridad_social_empleados))
+        </code>
+    </pre>
 </body>
 </html>
